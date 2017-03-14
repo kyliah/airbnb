@@ -10,9 +10,9 @@ import {
   Router
 } from 'react-native-router-flux';
 
-import HomeScene from './src/scenes/HomeScene';
-import AboutScene from './src/scenes/AboutScene';
-import RoomsContainer from './src/containers/RoomsContainer';
+import RoomsContainer from './src/scenes/RoomsContainer';
+import RoomScene from './src/scenes/RoomsScene';
+import RoomScene from './src/scenes/RoomScene';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,18 +20,34 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    marginTop: 20
+  },
+  navBar: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    backgroundColor: '#FF5A5F',
+  },
+  navTitle: {
+    color: '#fff'
+  },
+  navIcon: {
+    tintColor: 'rgb(255,255,255)',
+  },
+  baseText: {
+    fontFamily: 'Cochin',
   },
 });
-
 
 
 export default class App extends React.Component {
   render() {
     return (
-      <Router>
-        <Scene key={'home'} title={'Accueil'} component={RoomsContainer} initial={true}/>
-        <Scene key={'about'} title={'About'} component={AboutScene} />
+      <Router 
+        navigationBarStyle={styles.navBar} 
+        titleStyle={styles.navTitle}
+        barButtonIconStyle={styles.navIcon}>
+        <Scene key={'home'} title={'Home'} component={RoomsScene} initial={true}/>
+        <Scene key={'Room'} title={'Room'} component={RoomScene} />
       </Router>
 
     );
