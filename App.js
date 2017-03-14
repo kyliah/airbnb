@@ -11,7 +11,7 @@ import {
 } from 'react-native-router-flux';
 
 import RoomsContainer from './src/scenes/RoomsContainer';
-import RoomScene from './src/scenes/RoomsScene';
+//import RoomsScene from './src/scenes/RoomsScene';
 import RoomScene from './src/scenes/RoomScene';
 
 const styles = StyleSheet.create({
@@ -46,7 +46,7 @@ export default class App extends React.Component {
         navigationBarStyle={styles.navBar} 
         titleStyle={styles.navTitle}
         barButtonIconStyle={styles.navIcon}>
-        <Scene key={'home'} title={'Home'} component={RoomsScene} initial={true}/>
+        <Scene key={'home'} title={'Home'} component={RoomsContainer} initial={true}/>
         <Scene key={'Room'} title={'Room'} component={RoomScene} />
       </Router>
 
