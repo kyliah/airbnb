@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class Profile extends React.Component {
+class Card extends React.Component {
   render() {
     const {
       name,
@@ -43,7 +43,7 @@ class Profile extends React.Component {
 
     const source = group_photo.photo_link;
 
-    // console.log('Profile#render source', source);
+    // console.log('Card#render source', source);
     return (
       <View
         style={styles.container}>
@@ -65,4 +65,34 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+export default Card;
+
+
+
+
+
+      <View style={{padding:20}}>
+        <Image
+          source={{ uri: rowData.photos[0]}}
+          style={{width: width - 40, height: 200}}/>
+        <Text
+          style={[styles.textTitle, styles.baseText]}>
+          {rowData.title}
+        </Text>
+
+        <View style={{flexDirection: 'row'}}>
+          <Text style={styles.stars}> 
+            {'★'.repeat(rowData.ratingValue)}
+            {'☆'.repeat(5 - rowData.ratingValue)}
+          </Text>
+          <Text style={{marginTop:5, marginLeft:5}}>
+            {rowData.reviews} reviews
+          </Text>
+        </View>
+        <Text style={styles.textPrice}>
+            {rowData.price} €
+        </Text>
+        <Image
+          source={{ uri: rowData.user.account.photos[0]}}
+          style={styles.imgAvatar}/>
+      </View>

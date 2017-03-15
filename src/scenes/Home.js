@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   StyleSheet,
   Text,
@@ -9,6 +10,8 @@ import {
   Dimensions,
   TouchableOpacity
 } from 'react-native';
+
+import Profile from '../components/Card'; 
 
 const styles = StyleSheet.create({
   baseText: {
