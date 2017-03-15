@@ -14,7 +14,7 @@ import {
 } from 'react-native-router-flux';
 
 import RoomsContainer from './src/scenes/RoomsContainer';
-//import RoomsScene from './src/scenes/RoomsScene';
+import RoomsScene from './src/scenes/RoomsScene';
 import RoomScene from './src/scenes/RoomScene';
 
 const styles = StyleSheet.create({
@@ -44,14 +44,6 @@ const styles = StyleSheet.create({
 
 export default class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      activePage: 'home',
-      dataSource: {}
-    }
-  }
-
   goToRooms() {
     this.setState({
       activePage: 'home',
@@ -65,41 +57,14 @@ export default class App extends React.Component {
     });
   }
 
-  componentDidMount() {
-    fetch('http://localhost:3001/api/room?city=paris')
-      .then(res => res.json())
-      .then(json => {
-        console.log('App#componentDidMount json', json.rooms);
-        this.setState({
-          isLoading: false,
-          dataSource: this.state.dataSource.cloneWithRows(json.rooms)
-        });
-      console.log("#App componentDidMount",dataSource);
-      });
-  }
-
-/* renderRooms() {
-    const {
-      activePage,
-      roomId
-    } = this.state;
-    return <RoomsContainer
-            dataSource={dataSource}/>
-  }
-*/
-
   render() {
-    const {
-      dataSource,
-    } = this.state;
-    
     return (
       <View style={{ flex: 1 }}>
         <Router 
           navigationBarStyle={styles.navBar} 
           titleStyle={styles.navTitle}
           barButtonIconStyle={styles.navIcon}>
-          <Scene key={'home'} title={'Home'} component={RoomsContainer} initial={true} dataSource={dataSource}/>
+          <Scene key={'home'} title={'Home'} component={RoomsScene} initial={true}/>
           <Scene key={'Room'} title={'Room'} component={RoomScene} />
         </Router>
         <StatusBar barStyle="light-content" />

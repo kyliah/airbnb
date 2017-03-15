@@ -9,7 +9,6 @@ import {
   ActivityIndicator,
   Dimensions,
   TouchableOpacity,
-  StatusBar
 } from 'react-native';
 
 
@@ -52,7 +51,7 @@ const height = dim.height;
 
 class RoomsContainer extends React.Component {
 
-/*  constructor(props) {
+  constructor(props) {
       super(props);
       const ds = new ListView.DataSource({
         rowHasChanged: (r1, r2) => r1 !== r2
@@ -63,15 +62,7 @@ class RoomsContainer extends React.Component {
         activePage: 'home',
       };
       this.goToRoom = this.goToRoom.bind(this);
-  }
-*/
-
-  constructor(props) {
-    super(props);
-    this.dataSource = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2,
-    });
-  }
+    }
 
   goToRooms() {
     this.setState({
@@ -86,18 +77,18 @@ class RoomsContainer extends React.Component {
     });
   }
 
-/*  componentDidMount() {
+  componentDidMount() {
     fetch('http://localhost:3001/api/room?city=paris')
-    .then(res => res.json())
-    .then(json => {
-      console.log('App#componentDidMount json', json.rooms);
-       this.setState({
-        isLoading: false,
-        dataSource: this.state.dataSource.cloneWithRows(json.rooms)
+      .then(res => res.json())
+      .then(json => {
+        console.log('App#componentDidMount json', json.rooms);
+        this.setState({
+          isLoading: false,
+          dataSource: this.state.dataSource.cloneWithRows(json.rooms)
+        });
       });
-    });
+
   }
-*/
 
   renderRooms() {
     const {
@@ -107,29 +98,24 @@ class RoomsContainer extends React.Component {
     if (activePage !== 'home') {
       return null;
     }
-    if (activePage === 'home'){
-      return <RoomsScene/>
-    }
   }
 
   render() {
-/*    const {
-      //isLoading,
-      //activePage,
+    const {
+      isLoading,
+      activePage,
     } = this.state;
 
-    if (this.props.dataSource.length === 0 ){
+    if (this.state.dataSource.length === 0 || isLoading === true ){
       return(<Text>loading...</Text>)
     }
-*/
-console.log("RoomsContainer this props",this.props)
     return (
-//renderUser(rowData){return(<Card {...rowDta}/ >)}
+      //renderUser(rowData){return(<Card {...rowDta}/ >)}
 //renderRow={this.renderUser}
 
-/*      <ListView
+      <ListView
         style={{marginTop:100}}
-        dataSource={this.props.dataSource}
+        dataSource={this.state.dataSource}
         renderRow={(rowData) =>
           <TouchableOpacity>
             <View style={{padding:20}}>
@@ -159,8 +145,6 @@ console.log("RoomsContainer this props",this.props)
             </View>
           </TouchableOpacity>
         }/>
-*/
-<Text style={{marginTop:100}}>salut rooms container</Text>
     );
   }
 }
